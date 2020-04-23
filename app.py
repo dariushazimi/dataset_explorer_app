@@ -137,7 +137,7 @@ def main():
             #and now plot it by passing in our custom dataset
             st.line_chart(cust_data)
         # Custome plot
-        elif type_of_plot == 'box':
+        elif type_of_plot:
             #create a custom data
             cust_plot = df[selected_columns_names].plot(kind=type_of_plot)
             #and now plot it by passing in our custom dataset
