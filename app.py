@@ -110,7 +110,7 @@ def main():
     # Pie Chart
 
     if st.checkbox("Pie Plot"):
-        all_columns_names = df.column.tolist()
+        all_columns_names = df.columns.tolist()
         if st.buttons('Generating Plot'):
             st.success('Generating Customizable plot of {} for {}'.format(type_of_plot, selected_columns_names))
 
