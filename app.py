@@ -67,6 +67,7 @@ def main():
         all_columns =  df.columns.tolist()
         selected_columns = st.multiselect("Select", all_columns)
         new_df = df[selected_columns]
+        st.write('# Selected Columns')
         st.dataframe(new_df)
 
    
@@ -92,8 +93,12 @@ def main():
         st.write(df.dtypes)
     
    
-    # select columns
     # show summary
+    if st.checkbox("Summary"):
+        st.write(df.describe())
+    # Transpose summary
+    if st.checkbox("Transpose"):
+        st.write(df.describe().T)
 
 
 if __name__ == '__main__':
