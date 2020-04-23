@@ -101,5 +101,49 @@ def main():
         st.write(df.describe().T)
 
 
+    ## Plot and visualization
+
+    st.subheader("Data Visualization")
+    # Correlation
+    # Seaborn Plot
+    # Count plot
+    # Pie Chart
+    # Customizable Plot
+
+    st.subheader("Customizable Plot")
+    all_columns_names = df.columns.tolist()
+    type_of_plot = st.selectbox("Slect type of plot", ['area', 'bar', 'line', 'histogram', 'box', 'kde'])
+    # we need to be able to slect the columns
+
+    selected_columns_names  = st.multiselect('Select columns to plot', all_columns_names)
+
+    if st.button("Generate Plot"):
+        st.success("Genrating Customizable Plot of {} for {}".format(type_of_plot, selected_columns_names))
+
+        # Plot by Streamlit
+        if type_of_plot == 'area':
+            #create a custom data
+            cust_data = df[selected_columns_names]
+            #and now plot it by passing in our custom dataset
+            st.area_chart(cust_data)
+        elif type_of_plot == 'bar':
+            #create a custom data
+            cust_data = df[selected_columns_names]
+            #and now plot it by passing in our custom dataset
+            st.bar_chart(cust_data)
+        elif type_of_plot == 'line':
+            #create a custom data
+            cust_data = df[selected_columns_names]
+            #and now plot it by passing in our custom dataset
+            st.line_chart(cust_data)
+        # Custome plot
+        elif type_of_plot == 'box':
+            #create a custom data
+            cust_plot = df[selected_columns_names].plot(kind=type_of_plot)
+            #and now plot it by passing in our custom dataset
+            st.write(cust_data)
+            st.pyplot()
+
+
 if __name__ == '__main__':
     main()
