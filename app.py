@@ -108,11 +108,17 @@ def main():
     # Seaborn Plot
     # Count plot
     # Pie Chart
+
+    if st.checkbox("Pie Plot"):
+        all_columns_names = df.columnn.tolist()
+        if st.buttons('Generating Plot'):
+            st.success('Generating Customizable plot of {} for {}'.format(type_of_plot, selected_columns_names))
+
     # Customizable Plot
 
     st.subheader("Customizable Plot")
     all_columns_names = df.columns.tolist()
-    type_of_plot = st.selectbox("Slect type of plot", ['area', 'bar', 'line', 'histogram', 'box', 'kde'])
+    type_of_plot = st.selectbox("Slect type of plot", ['area', 'bar', 'line', 'hist', 'box', 'kde'])
     # we need to be able to slect the columns
 
     selected_columns_names  = st.multiselect('Select columns to plot', all_columns_names)
@@ -139,10 +145,11 @@ def main():
         # Custome plot
         elif type_of_plot:
             #create a custom data
-            cust_plot = df[selected_columns_names].plot(kind=type_of_plot)
+            cust_plot= df[selected_columns_names].plot(kind=type_of_plot)
             #and now plot it by passing in our custom dataset
-            st.write(cust_data)
+            st.write(cust_plot)
             st.pyplot()
+          
 
 
 if __name__ == '__main__':
