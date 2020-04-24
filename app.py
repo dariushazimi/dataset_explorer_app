@@ -1,13 +1,12 @@
 # Author: Dariush Azimi
 # Created: April 22, 2020
 
-import os
-import streamlit as st
-import seaborn as sns
-import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
-
+import os
+import pandas as pd
+import streamlit as st
+import seaborn as sns
 matplotlib.use('Agg')
 
 
@@ -26,6 +25,7 @@ def main():
         filenames = os.listdir(folder_path)
         selected_filename = st.selectbox("Select a file", filenames)
         return os.path.join(folder_path, selected_filename)
+
     filename = file_selector()
 
     # show the user that they have actually selected the file
@@ -125,6 +125,7 @@ def main():
     st.subheader("Customizable Plot")
     all_columns_names = df.columns.tolist()
     type_of_plot = st.selectbox("Slect type of plot", ['area', 'bar', 'line', 'hist', 'box', 'kde'])
+    
     # we need to be able to slect the columns
 
     selected_columns_names = st.multiselect('Select columns to plot', all_columns_names)
